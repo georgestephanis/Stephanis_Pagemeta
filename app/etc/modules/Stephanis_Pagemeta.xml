@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Stephanis_Pagemeta>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Stephanis_Pagemeta>
+    </modules>
+</config>

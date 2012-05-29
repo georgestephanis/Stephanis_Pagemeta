@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<config>
+
+	<modules>
+		<Stephanis_Pagemeta>
+			<version>0.1.0</version>
+		</Stephanis_Pagemeta>
+	</modules>
+
+	<global>
+		<models>
+			<pagemeta>
+				<class>Stephanis_Pagemeta_Model</class>
+			</pagemeta>
+			<pagemeta_mysql4>
+				<class>Stephanis_Pagemeta_Model_Mysql4</class>
+				<entities>
+					<pagemeta>
+						<table>cms_page_meta</table>
+					</pagemeta>
+				</entities>
+			</pagemeta_mysql4>
+		</models>
+		<resources>
+			<pagemeta_setup>
+				<setup>
+					<module>Stephanis_Pagemeta</module>
+					<class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</pagemeta_setup>
+			<pagemeta_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</pagemeta_write>
+			<pagemeta_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</pagemeta_read>
+		</resources>
+		<helpers>
+			<pagemeta>
+				<class>Stephanis_Pagemeta_Helper</class>
+			</pagemeta>
+		</helpers>
+	</global>
+
+	<adminhtml>
+		<events>
+			<cms_page_prepare_save>
+				<observers>
+					<stephanis_pagemeta_save_page>
+						<type>singleton</type>
+						<class>pagemeta/observer_opengraph</class>
+						<method>savePage</method>
+					</stephanis_pagemeta_save_page>
+				</observers>
+			</cms_page_prepare_save>
+			<adminhtml_cms_page_edit_tab_main_prepare_form>
+				<observers>
+					<stephanis_pagemeta_prepare_form>
+						<type>singleton</type>
+						<class>pagemeta/observer_opengraph</class>
+						<method>prepareForm</method>
+					</stephanis_pagemeta_prepare_form>
+				</observers>
+			</adminhtml_cms_page_edit_tab_main_prepare_form>
+		</events>
+	</adminhtml>
+
+</config>
