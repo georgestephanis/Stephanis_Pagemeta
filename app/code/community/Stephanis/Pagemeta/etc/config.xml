@@ -1,16 +1,15 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
-
 	<modules>
 		<Stephanis_Pagemeta>
 			<version>0.1.0</version>
 		</Stephanis_Pagemeta>
 	</modules>
-
 	<global>
 		<models>
 			<pagemeta>
 				<class>Stephanis_Pagemeta_Model</class>
+				<resourceModel>pagemeta_mysql4</resourceModel>
 			</pagemeta>
 			<pagemeta_mysql4>
 				<class>Stephanis_Pagemeta_Model_Mysql4</class>
@@ -22,15 +21,6 @@
 			</pagemeta_mysql4>
 		</models>
 		<resources>
-			<pagemeta_setup>
-				<setup>
-					<module>Stephanis_Pagemeta</module>
-					<class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
-				</setup>
-				<connection>
-					<use>core_setup</use>
-				</connection>
-			</pagemeta_setup>
 			<pagemeta_write>
 				<connection>
 					<use>core_write</use>
@@ -41,6 +31,15 @@
 					<use>core_read</use>
 				</connection>
 			</pagemeta_read>
+			<pagemeta_setup>
+				<setup>
+					<module>Stephanis_Pagemeta</module>
+					<class>Mage_Core_Model_Resource_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</pagemeta_setup>
 		</resources>
 		<helpers>
 			<pagemeta>
@@ -48,7 +47,6 @@
 			</pagemeta>
 		</helpers>
 	</global>
-
 	<adminhtml>
 		<events>
 			<cms_page_prepare_save>
@@ -71,5 +69,4 @@
 			</adminhtml_cms_page_edit_tab_main_prepare_form>
 		</events>
 	</adminhtml>
-
 </config>
