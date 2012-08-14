@@ -4,7 +4,7 @@ class Stephanis_Pagemeta_Helper_Data extends Mage_Core_Helper_Abstract {
 
 	public function get( int $page_id, string $key, string $default = null ){
 		$core_read 	= Mage::getSingleton('core/resource')->getConnection('core_read');
-		$table 		= Mage::getSingleton('core/resource')->getTableName('pagemeta');
+		$table 		= Mage::getSingleton('core/resource')->getTableName('pagemeta/pagemeta');
 
 		$sql = "SELECT 	* 
 				FROM 	{$table} 
@@ -23,7 +23,7 @@ class Stephanis_Pagemeta_Helper_Data extends Mage_Core_Helper_Abstract {
 
 	public function getAllForPage( int $page_id, array $defaults = array() ) {
 		$core_read 	= Mage::getSingleton('core/resource')->getConnection('core_read');
-		$table 		= Mage::getSingleton('core/resource')->getTableName('pagemeta');
+		$table 		= Mage::getSingleton('core/resource')->getTableName('pagemeta/pagemeta');
 
 		$sql = "SELECT 	* 
 				FROM 	{$table} 
@@ -42,7 +42,7 @@ class Stephanis_Pagemeta_Helper_Data extends Mage_Core_Helper_Abstract {
 
 	public function set( int $page_id, string $key, string $value ){
 		$core_write = Mage::getSingleton('core/resource')->getConnection('core_write');
-		$table 		= Mage::getSingleton('core/resource')->getTableName('pagemeta');
+		$table 		= Mage::getSingleton('core/resource')->getTableName('pagemeta/pagemeta');
 
 		$previous = $this->get( $page_id, $key );
 		
